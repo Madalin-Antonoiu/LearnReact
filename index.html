@@ -21,12 +21,13 @@
 <body>
 
     <div id="app"></div>
+    <p id="log"></p>
 
     <script type="text/babel">
 
         class Counter extends React.Component {
             state = {
-                counter : 0
+                counter : -1
             }
             increment = () => {
                 this.setState({
@@ -34,7 +35,11 @@
                 })
             }
             componentDidMount(){
-                this.setState({counter : 42});
+                this.setState({counter: 0});
+            }
+            componentDidUpdate(){
+                const log = document.getElementById("log");
+                log.innerHTML = `Number of clicks : ${this.state.counter}`
             }
             render (){
                 return (
